@@ -5,7 +5,7 @@ Questions:
 3) I'm running 'npm start' from the root of the TicTacToe folder, so how is it knowing to look inside the 'public' folder to access index.html? Is it just a convention to put index.html inside a folder called 'public'?
 4) How come the 'value' argument (prop) into Square needed braces around it, i.e. "function Square({ value })" instead of "function Square(value)"? Is it a JSX syntax thing?
 5) How come the useState output [value, setValue] could be created with 'const' keyword? Isn't the value going to change with each click?
-
+6) I kept encountering a bug (now I forget what it was), and online forums suggested I needed to download .eslintrc.json to fix it. What is this for, and should I put it in .gitignore or do I need to commit it? (I commited it just in case)
 */
 
 import React from "react";
