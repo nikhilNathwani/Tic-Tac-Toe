@@ -18,25 +18,46 @@ export default function Game() {
 	const currentSquares = history[currentMove];
 
 	function handlePlay(nextSquares) {
-		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+		const nextHistory = [...history, nextSquares];
 		setHistory(nextHistory);
 		setCurrentMove(nextHistory.length - 1);
 	}
 
 	function jumpTo(nextMove) {
+		const nextHistory = history.slice(0, nextMove + 1);
+		setHistory(nextHistory);
 		setCurrentMove(nextMove);
 	}
 
 	const moves = history.map((squares, move) => {
-		if (currentMove == 0) {
+		console.log(
+			"Move:",
+			move,
+			"Squares:",
+			squares,
+			"Winner:",
+			calculateWinner(squares)
+		);
+		if (currentMove === 0) {
 			return; //Don't show time travel until first move is made
+		}
+		let winner = calculateWinner(squares);
+		if (winner) {
+			return (
+				<li key={move}>
+					{winner} wins on move #{move}!
+				</li>
+			);
+		}
+		if (!winner && move === currentMove && currentMove === squares.length) {
+			return <li key={move}>Stalemate at move #{move}!</li>;
 		}
 		if (move === currentMove) {
 			return <li key={move}>You are at move #{currentMove}</li>;
 		}
 		let description;
 		if (move > 0) {
-			description = `Go to move #${move}`;
+			description = `Return to move #${move}`;
 		} else {
 			description = "Restart game";
 		}
