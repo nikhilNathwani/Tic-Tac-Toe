@@ -77,7 +77,7 @@ export default function Game() {
 				/>
 			</div>
 			<div className="game-info">
-				<ol>{moves}</ol>
+				<ol start="0">{moves}</ol>
 			</div>
 		</div>
 	);
